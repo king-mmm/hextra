@@ -77,34 +77,6 @@ menu:
       params:
         icon: github
 
-  sidebar:
-    - identifier: writing
-      name: 写作
-      params:
-        type: separator
-      weight: 1
-    - identifier: blog
-      name: 博客
-      pageRef: /blog
-      weight: 2
-    - identifier: archives
-      name: 归档
-      pageRef: /archives
-      weight: 3
-    - identifier: profile
-      name: 个人
-      params:
-        type: separator
-      weight: 4
-    - identifier: projects
-      name: 项目
-      pageRef: /projects
-      weight: 5
-    - identifier: about
-      name: 关于
-      pageRef: /about
-      weight: 6
-
 params:
   description: 记录技术、项目和生活思考的个人博客。
 

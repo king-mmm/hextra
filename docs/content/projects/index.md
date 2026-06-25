@@ -23,7 +23,7 @@ layout: wide
     icon="sparkles"
   >}}
   {{< card
-    link="/blog/"
+    link="../blog/"
     title="项目复盘"
     subtitle="如果项目还没有公开链接，可以先写一篇博客复盘，再从这里链接过去。"
     icon="document-text"
