@@ -1,20 +1,27 @@
 ---
-title: About
+title: 关于我
+description: 个人介绍、技能方向和联系方式。
 toc: false
 ---
 
-Hextra is designed to be a simple, fast, and flexible theme for building modern static websites. It is especially well-suited for documentation websites but can also be used for various types of sites, such as blogs, portfolios, and more.
+你好，我是这个博客的作者。
 
-Hugo, like Jekyll, is a static site generator. What sets Hugo apart is that it is a single binary, making it easy to install and run on various platforms. It is also extremely fast and reliable, capable of rendering a site with thousands of pages in milliseconds.
+这里可以放一段简短的自我介绍：你是谁，正在关注什么方向，为什么开始写博客。建议控制在 3 到 5 句话，让访问者很快理解这个站点的气质。
 
-Hextra is built with a mindset focused on having a minimal footprint. To get started, no extra dependencies like Node.js packages are required; all you need is a single YAML configuration file, along with your Markdown content. Thus, we can focus on writing quality content instead of setting up tooling.
+## 我关注的方向
 
-## Credits
+- 技术学习与实践
+- 项目开发与复盘
+- 工具、效率和自动化
+- 值得长期沉淀的经验
 
-Hextra cannot be built without the following tools and inspirations:
+## 这个博客会写什么
 
-- [Hugo](https://gohugo.io/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Heroicons](https://heroicons.com/)
-- [Nextra](https://nextra.vercel.app/)
-- [Next.js](https://nextjs.org/)
+我会把这里当作自己的长期记录空间。文章不追求一次写完美，而是先把真实的问题、过程和结论记录下来，再随着经验更新。
+
+## 联系我
+
+- GitHub: <https://github.com/>
+- Email: you@example.com
+
+把上面的链接换成你的真实联系方式即可。
