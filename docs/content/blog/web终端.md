@@ -1,7 +1,6 @@
-
-
 ---
 title: "Spring Boot 学习记录"
+slug: web-terminal
 date: 2026-06-25
 categories:
   - 技术
@@ -9,7 +8,6 @@ tags:
   - Spring Boot
   - Java
   - 后端
-
 ---
 
 # 详细功能需求
