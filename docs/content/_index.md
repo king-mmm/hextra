@@ -1,6 +1,5 @@
 ---
 title: 我的个人博客
-layout: hextra-home
 ---
 
 {{< hextra/hero-badge link="blog/" >}}

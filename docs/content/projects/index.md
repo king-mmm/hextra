@@ -3,6 +3,7 @@ title: 项目
 description: 个人项目、作品和开源实践。
 toc: false
 layout: wide
+excludeSearch: true
 ---
 
 <p class="hx:mb-10 hx:text-center hx:text-lg hx:text-gray-500 hx:dark:text-gray-400">

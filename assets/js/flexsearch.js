@@ -61,7 +61,8 @@
       const data = await resp.json();
       let pageId = 0;
       for (const route in data) {
-        let pageContent = '';
+        const pageTitle = data[route].title || '';
+        let pageContent = pageTitle;
         ++pageId;
         const urlParts = route.split('/').filter(x => x !== "" && !x.startsWith('#'));
 
@@ -124,9 +125,19 @@
           pageContent += ` ${title} ${content}`;
         }
 
+        sectionIndex.add({
+          id: `${route}__title`,
+          url: route,
+          title: pageTitle,
+          crumb,
+          pageId: `page_${pageId}`,
+          content: pageTitle,
+          display: pageTitle
+        });
+
         pageIndex.add({
           id: pageId,
-          title: data[route].title,
+          title: pageTitle,
           breadcrumbs: crumbParts.slice(0, -1),
           content: pageContent
         });
