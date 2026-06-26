@@ -1,5 +1,5 @@
 # Site configuration
-baseURL: "https://example.com/"
+baseURL: "https://king-mmm.github.io/hextra/"
 title: "我的个人博客"
 theme: hextra
 
@@ -53,19 +53,19 @@ menu:
   main:
     - identifier: blog
       name: 博客
-      pageRef: /blog
+      url: /blog/
       weight: 1
     - identifier: projects
       name: 项目
-      pageRef: /projects
+      url: /projects/
       weight: 2
     - identifier: about
       name: 关于
-      pageRef: /about
+      url: /about/
       weight: 3
     - identifier: archives
       name: 归档
-      pageRef: /archives
+      url: /archives/
       weight: 4
     - name: 搜索
       weight: 5
