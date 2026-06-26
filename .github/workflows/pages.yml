@@ -44,11 +44,21 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
+          rm -rf "${{ github.workspace }}/public"
           hugo --gc --minify --cleanDestinationDir \
             --themesDir=../.. \
             --source=docs \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
-            --destination=../public
+            --destination="${{ github.workspace }}/public"
+
+      - name: Verify generated pages
+        run: |
+          test -f "${{ github.workspace }}/public/index.html"
+          test -f "${{ github.workspace }}/public/blog/index.html"
+          test -f "${{ github.workspace }}/public/projects/index.html"
+          test -f "${{ github.workspace }}/public/about/index.html"
+          test -f "${{ github.workspace }}/public/archives/index.html"
+          find "${{ github.workspace }}/public" -maxdepth 2 -type f | sort
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
