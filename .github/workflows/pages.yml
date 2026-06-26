@@ -40,30 +40,30 @@ jobs:
           sudo dpkg -i "${{ runner.temp }}/hugo.deb"
 
       - name: Build site
+        working-directory: ./docs
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          rm -rf "${{ github.workspace }}/public"
+          rm -rf ../public
           hugo --gc --minify --cleanDestinationDir \
             --themesDir=../.. \
-            --source=docs \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
-            --destination="${{ github.workspace }}/public"
+            --destination=../public
 
       - name: Verify generated pages
         run: |
+          find "${{ github.workspace }}/public" -maxdepth 2 -type f | sort
           test -f "${{ github.workspace }}/public/index.html"
           test -f "${{ github.workspace }}/public/blog/index.html"
           test -f "${{ github.workspace }}/public/projects/index.html"
           test -f "${{ github.workspace }}/public/about/index.html"
           test -f "${{ github.workspace }}/public/archives/index.html"
-          find "${{ github.workspace }}/public" -maxdepth 2 -type f | sort
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ${{ github.workspace }}/public
 
   deploy:
     environment:
