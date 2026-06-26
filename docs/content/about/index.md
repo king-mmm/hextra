@@ -1,5 +1,5 @@
 ---
-title: 关于我
+title: 关于
 description: 这里是我的个人介绍、技术方向和博客说明。
 toc: true
 ---
