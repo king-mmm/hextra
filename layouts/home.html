@@ -11,6 +11,10 @@
     .blog-home {
       position: relative;
       isolation: isolate;
+      width: min(100% - 48px, 1120px);
+      margin: 0 auto;
+      padding: 56px 0 96px;
+      color: #0f172a;
     }
 
     .blog-home::before {
@@ -25,9 +29,250 @@
       opacity: 0.55;
     }
 
+    .blog-home-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.84);
+      padding: 5px 12px;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      backdrop-filter: blur(12px);
+    }
+
+    .blog-home-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #2563eb;
+      box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.12);
+    }
+
+    .blog-home-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 64px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.28);
+      padding-bottom: 48px;
+    }
+
+    .blog-home-title {
+      max-width: 760px;
+      margin: 0;
+      color: #020617;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .blog-home-intro {
+      max-width: 680px;
+      margin-top: 22px;
+      color: #475569;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .blog-home-intro p {
+      margin: 0;
+    }
+
+    .blog-home-stats {
+      display: grid;
+      gap: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.32);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.78));
+      padding: 18px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(14px);
+    }
+
+    .blog-home-stat {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      padding-bottom: 12px;
+    }
+
+    .blog-home-stat:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .blog-home-stat-value {
+      color: #020617;
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .blog-home-stat-label {
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .blog-home-section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 22px;
+    }
+
+    .blog-home-section-title {
+      margin: 0;
+      color: #020617;
+      font-size: 28px;
+      font-weight: 750;
+      letter-spacing: 0;
+    }
+
+    .blog-home-section-desc {
+      margin: 8px 0 0;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .blog-home-archive-link,
+    .blog-home-read-more {
+      color: #2563eb;
+      font-size: 14px;
+      font-weight: 650;
+      text-decoration: none;
+      text-underline-offset: 4px;
+    }
+
+    .blog-home-archive-link:hover,
+    .blog-home-read-more:hover {
+      text-decoration: underline;
+    }
+
+    .blog-home-posts {
+      display: grid;
+      gap: 18px;
+    }
+
     .dark .blog-home::before {
       background-image: radial-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px);
       opacity: 0.45;
+    }
+
+    .blog-home-post {
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+      padding: 24px;
+      box-shadow: 0 12px 38px rgba(15, 23, 42, 0.06);
+      backdrop-filter: blur(12px);
+    }
+
+    .blog-home-post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 14px;
+      margin-bottom: 12px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .blog-home-post-date {
+      color: #334155;
+      font-weight: 650;
+    }
+
+    .blog-home-post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+    }
+
+    .blog-home-post-tags a {
+      margin-right: 0 !important;
+      color: #64748b !important;
+      text-decoration: none;
+    }
+
+    .blog-home-post-title {
+      margin: 0;
+      color: #020617;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 760;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .blog-home-post-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 180ms ease;
+    }
+
+    .blog-home-post-title a:hover {
+      color: #2563eb;
+    }
+
+    .blog-home-post-desc {
+      margin: 12px 0 0;
+      color: #475569;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .blog-home-read-more {
+      display: inline-flex;
+      margin-top: 16px;
+    }
+
+    .blog-home-empty {
+      margin-top: 28px;
+      color: #64748b;
+    }
+
+    .dark .blog-home {
+      color: #e5e7eb;
+    }
+
+    .dark .blog-home-title,
+    .dark .blog-home-section-title,
+    .dark .blog-home-post-title,
+    .dark .blog-home-stat-value {
+      color: #f8fafc;
+    }
+
+    .dark .blog-home-intro,
+    .dark .blog-home-post-desc {
+      color: #cbd5e1;
+    }
+
+    .dark .blog-home-section-desc,
+    .dark .blog-home-stat-label,
+    .dark .blog-home-post-meta {
+      color: #94a3b8;
+    }
+
+    .dark .blog-home-eyebrow,
+    .dark .blog-home-stats,
+    .dark .blog-home-post {
+      border-color: rgba(51, 65, 85, 0.9);
+      background: rgba(2, 6, 23, 0.72);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+    }
+
+    .dark .blog-home-post-date {
+      color: #e2e8f0;
     }
 
     .blog-home-hero,
@@ -64,6 +309,46 @@
       }
     }
 
+    @media (max-width: 860px) {
+      .blog-home {
+        width: min(100% - 32px, 1120px);
+        padding-top: 40px;
+      }
+
+      .blog-home-hero {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 44px;
+        padding-bottom: 36px;
+      }
+
+      .blog-home-stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .blog-home-stat {
+        display: block;
+        border-bottom: 0;
+        padding-bottom: 0;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .blog-home-section-head {
+        display: block;
+      }
+
+      .blog-home-archive-link {
+        display: inline-flex;
+        margin-top: 12px;
+      }
+
+      .blog-home-post {
+        padding: 20px;
+      }
+    }
+
     @keyframes blog-home-rise {
       from {
         opacity: 0;
@@ -76,66 +361,66 @@
     }
   </style>
 
-  <main id="content" class="blog-home hx:mx-auto hx:w-full hx:max-w-5xl hx:px-6 hx:pb-20 hx:pt-12 hx:md:px-10 hx:md:pt-16">
+  <main id="content" class="blog-home">
     {{ partial "custom/page-begin.html" . }}
-    <header class="blog-home-hero hx:mb-14 hx:grid hx:gap-8 hx:border-b hx:border-gray-200 hx:pb-10 hx:dark:border-neutral-800 hx:lg:grid-cols-[1fr_auto] hx:lg:items-end">
+    <header class="blog-home-hero">
       <div>
-        <div class="hx:mb-5 hx:inline-flex hx:items-center hx:gap-2 hx:rounded-full hx:border hx:border-gray-200 hx:bg-white/80 hx:px-3 hx:py-1 hx:text-xs hx:font-medium hx:text-gray-600 hx:shadow-sm hx:dark:border-neutral-800 hx:dark:bg-neutral-950/70 hx:dark:text-gray-400">
-          <span class="hx:h-1.5 hx:w-1.5 hx:rounded-full hx:bg-primary-600 hx:shadow-[0_0_0_4px_rgba(37,99,235,0.12)]"></span>
+        <div class="blog-home-eyebrow">
+          <span class="blog-home-eyebrow-dot"></span>
           技术 · 项目 · 复盘
         </div>
         {{ if .Title }}
-          <h1 class="hx:max-w-3xl hx:text-4xl hx:font-bold hx:leading-tight hx:tracking-tight hx:text-slate-950 hx:dark:text-slate-50 hx:md:text-6xl">{{ .Title }}</h1>
+          <h1 class="blog-home-title">{{ .Title }}</h1>
         {{ end }}
-        <div class="content hx:mt-5 hx:max-w-2xl hx:text-base hx:leading-8 hx:text-gray-600 hx:dark:text-gray-400 hx:md:text-lg">
+        <div class="content blog-home-intro">
           {{ partial "custom/content-begin.html" . }}
           {{ .Content }}
           {{ partial "custom/content-end.html" . }}
         </div>
       </div>
 
-      <div class="hx:grid hx:min-w-52 hx:grid-cols-3 hx:gap-3 hx:rounded-md hx:border hx:border-gray-200 hx:bg-white/75 hx:p-4 hx:text-center hx:shadow-sm hx:backdrop-blur hx:dark:border-neutral-800 hx:dark:bg-neutral-950/60 hx:lg:grid-cols-1 hx:lg:text-left">
-        <div>
-          <div class="hx:text-2xl hx:font-semibold hx:text-slate-950 hx:dark:text-slate-50">{{ len $pages }}</div>
-          <div class="hx:mt-1 hx:text-xs hx:text-gray-500 hx:dark:text-gray-400">文章</div>
+      <div class="blog-home-stats">
+        <div class="blog-home-stat">
+          <div class="blog-home-stat-value">{{ len $pages }}</div>
+          <div class="blog-home-stat-label">文章</div>
         </div>
-        <div>
-          <div class="hx:text-2xl hx:font-semibold hx:text-slate-950 hx:dark:text-slate-50">{{ len site.Taxonomies.tags }}</div>
-          <div class="hx:mt-1 hx:text-xs hx:text-gray-500 hx:dark:text-gray-400">标签</div>
+        <div class="blog-home-stat">
+          <div class="blog-home-stat-value">{{ len site.Taxonomies.tags }}</div>
+          <div class="blog-home-stat-label">标签</div>
         </div>
-        <div>
-          <div class="hx:text-2xl hx:font-semibold hx:text-slate-950 hx:dark:text-slate-50">{{ len site.Taxonomies.categories }}</div>
-          <div class="hx:mt-1 hx:text-xs hx:text-gray-500 hx:dark:text-gray-400">分类</div>
+        <div class="blog-home-stat">
+          <div class="blog-home-stat-value">{{ len site.Taxonomies.categories }}</div>
+          <div class="blog-home-stat-label">分类</div>
         </div>
       </div>
     </header>
 
     <section class="blog-home-section" aria-labelledby="latest-posts">
-      <div class="hx:mb-5 hx:flex hx:items-end hx:justify-between hx:gap-4">
+      <div class="blog-home-section-head">
         <div>
-          <h2 id="latest-posts" class="hx:text-2xl hx:font-semibold hx:tracking-tight hx:text-slate-950 hx:dark:text-slate-50">最新文章</h2>
-          <p class="hx:mt-2 hx:text-sm hx:text-gray-500 hx:dark:text-gray-400">按时间记录学习、排查和项目推进。</p>
+          <h2 id="latest-posts" class="blog-home-section-title">最新文章</h2>
+          <p class="blog-home-section-desc">按时间记录学习、排查和项目推进。</p>
         </div>
-        <a class="hx:hidden hx:text-sm hx:font-medium hx:text-primary-600 hx:underline hx:underline-offset-4 hx:dark:text-primary-400 hx:sm:inline-flex" href="{{ "archives/" | relURL }}">查看归档</a>
+        <a class="blog-home-archive-link" href="{{ "archives/" | relURL }}">查看归档</a>
       </div>
       {{- if $paginator.Pages }}
-        <div class="hx:space-y-4">
+        <div class="blog-home-posts">
           {{- range $index, $page := $paginator.Pages }}
-            <article class="blog-home-post hx:rounded-md hx:border hx:border-gray-200 hx:bg-white/80 hx:p-5 hx:shadow-sm hx:backdrop-blur hx:hover:border-primary-200 hx:hover:bg-white hx:dark:border-neutral-800 hx:dark:bg-neutral-950/60 hx:dark:hover:border-primary-900/60 hx:dark:hover:bg-neutral-950" style="--post-index: {{ $index }}">
-              <div class="hx:mb-3 hx:flex hx:flex-wrap hx:items-center hx:gap-x-3 hx:gap-y-2 hx:text-sm hx:text-gray-500 hx:dark:text-gray-400">
-                <time class="hx:font-medium hx:text-gray-600 hx:dark:text-gray-300" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ partial "utils/format-date" $page.Date }}</time>
+            <article class="blog-home-post" style="--post-index: {{ $index }}">
+              <div class="blog-home-post-meta">
+                <time class="blog-home-post-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ partial "utils/format-date" $page.Date }}</time>
                 {{ if site.Params.blog.list.displayTags }}
-                  <div class="hx:flex hx:flex-wrap hx:gap-x-2 hx:gap-y-1">
+                  <div class="blog-home-post-tags">
                     {{ partial "tags.html" (dict "context" $page) }}
                   </div>
                 {{ end }}
               </div>
-              <h3 class="hx:text-2xl hx:font-semibold hx:tracking-tight hx:text-slate-950 hx:dark:text-slate-50">
-                <a class="hx:transition-colors hx:hover:text-primary-600 hx:dark:hover:text-primary-400" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+              <h3 class="blog-home-post-title">
+                <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
               </h3>
-              <p class="hx:mt-3 hx:text-base hx:leading-8 hx:text-gray-600 hx:dark:text-gray-400">{{- partial "utils/page-description" $page -}}</p>
+              <p class="blog-home-post-desc">{{- partial "utils/page-description" $page -}}</p>
               <a
-                class="hx:mt-4 hx:inline-flex hx:items-center hx:text-sm hx:font-medium hx:text-primary-600 hx:underline hx:underline-offset-4 hx:dark:text-primary-400"
+                class="blog-home-read-more"
                 href="{{ $page.RelPermalink }}"
                 aria-label="{{ printf "%s %s" $readMore $page.Title }}"
               >
@@ -145,12 +430,12 @@
           {{ end -}}
         </div>
       {{- else }}
-        <p class="hx:mt-6 hx:text-gray-600 hx:dark:text-gray-400">还没有文章。</p>
+        <p class="blog-home-empty">还没有文章。</p>
       {{- end }}
     </section>
 
     {{- if gt $paginator.TotalPages 1 -}}
-      <div class="hx:mt-8">
+      <div class="blog-home-pager">
         {{ partial "components/blog-pager.html" $paginator }}
       </div>
     {{- end -}}
