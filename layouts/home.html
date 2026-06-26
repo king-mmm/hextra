@@ -7,41 +7,137 @@
   {{- end -}}
   {{- $pagerSize := site.Params.blog.list.pagerSize | default 10 -}}
   {{- $paginator := .Paginate $pages $pagerSize -}}
-  <main id="content" class="hx:mx-auto hx:w-full hx:max-w-3xl hx:px-6 hx:pb-16 hx:pt-10 hx:md:px-8 hx:md:pt-14">
+  <style>
+    .blog-home {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .blog-home::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(15, 23, 42, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(to bottom, black, transparent 72%);
+      opacity: 0.55;
+    }
+
+    .dark .blog-home::before {
+      background-image: radial-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px);
+      opacity: 0.45;
+    }
+
+    .blog-home-hero,
+    .blog-home-section,
+    .blog-home-post {
+      animation: blog-home-rise 520ms ease both;
+    }
+
+    .blog-home-section {
+      animation-delay: 80ms;
+    }
+
+    .blog-home-post {
+      animation-delay: calc(var(--post-index, 0) * 70ms + 140ms);
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease;
+    }
+
+    .blog-home-post:hover {
+      transform: translateX(4px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .blog-home-hero,
+      .blog-home-section,
+      .blog-home-post {
+        animation: none;
+      }
+
+      .blog-home-post:hover {
+        transform: none;
+      }
+    }
+
+    @keyframes blog-home-rise {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+  <main id="content" class="blog-home hx:mx-auto hx:w-full hx:max-w-5xl hx:px-6 hx:pb-20 hx:pt-12 hx:md:px-10 hx:md:pt-16">
     {{ partial "custom/page-begin.html" . }}
-    <header class="hx:mb-12 hx:border-b hx:border-gray-200 hx:pb-8 hx:dark:border-neutral-800">
-      {{ if .Title }}
-        <h1 class="hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-950 hx:dark:text-slate-50 hx:md:text-5xl">{{ .Title }}</h1>
-      {{ end }}
-      <div class="content hx:mt-4 hx:max-w-2xl hx:text-base hx:leading-8 hx:text-gray-600 hx:dark:text-gray-400">
-        {{ partial "custom/content-begin.html" . }}
-        {{ .Content }}
-        {{ partial "custom/content-end.html" . }}
+    <header class="blog-home-hero hx:mb-14 hx:grid hx:gap-8 hx:border-b hx:border-gray-200 hx:pb-10 hx:dark:border-neutral-800 hx:lg:grid-cols-[1fr_auto] hx:lg:items-end">
+      <div>
+        <div class="hx:mb-5 hx:inline-flex hx:items-center hx:gap-2 hx:rounded-full hx:border hx:border-gray-200 hx:bg-white/80 hx:px-3 hx:py-1 hx:text-xs hx:font-medium hx:text-gray-600 hx:shadow-sm hx:dark:border-neutral-800 hx:dark:bg-neutral-950/70 hx:dark:text-gray-400">
+          <span class="hx:h-1.5 hx:w-1.5 hx:rounded-full hx:bg-primary-600 hx:shadow-[0_0_0_4px_rgba(37,99,235,0.12)]"></span>
+          技术 · 项目 · 复盘
+        </div>
+        {{ if .Title }}
+          <h1 class="hx:max-w-3xl hx:text-4xl hx:font-bold hx:leading-tight hx:tracking-tight hx:text-slate-950 hx:dark:text-slate-50 hx:md:text-6xl">{{ .Title }}</h1>
+        {{ end }}
+        <div class="content hx:mt-5 hx:max-w-2xl hx:text-base hx:leading-8 hx:text-gray-600 hx:dark:text-gray-400 hx:md:text-lg">
+          {{ partial "custom/content-begin.html" . }}
+          {{ .Content }}
+          {{ partial "custom/content-end.html" . }}
+        </div>
+      </div>
+
+      <div class="hx:grid hx:min-w-52 hx:grid-cols-3 hx:gap-3 hx:rounded-md hx:border hx:border-gray-200 hx:bg-white/75 hx:p-4 hx:text-center hx:shadow-sm hx:backdrop-blur hx:dark:border-neutral-800 hx:dark:bg-neutral-950/60 hx:lg:grid-cols-1 hx:lg:text-left">
+        <div>
+          <div class="hx:text-2xl hx:font-semibold hx:text-slate-950 hx:dark:text-slate-50">{{ len $pages }}</div>
+          <div class="hx:mt-1 hx:text-xs hx:text-gray-500 hx:dark:text-gray-400">文章</div>
+        </div>
+        <div>
+          <div class="hx:text-2xl hx:font-semibold hx:text-slate-950 hx:dark:text-slate-50">{{ len site.Taxonomies.tags }}</div>
+          <div class="hx:mt-1 hx:text-xs hx:text-gray-500 hx:dark:text-gray-400">标签</div>
+        </div>
+        <div>
+          <div class="hx:text-2xl hx:font-semibold hx:text-slate-950 hx:dark:text-slate-50">{{ len site.Taxonomies.categories }}</div>
+          <div class="hx:mt-1 hx:text-xs hx:text-gray-500 hx:dark:text-gray-400">分类</div>
+        </div>
       </div>
     </header>
 
-    <section aria-labelledby="latest-posts">
-      <h2 id="latest-posts" class="hx:mb-2 hx:text-xl hx:font-semibold hx:text-slate-950 hx:dark:text-slate-50">最新文章</h2>
+    <section class="blog-home-section" aria-labelledby="latest-posts">
+      <div class="hx:mb-5 hx:flex hx:items-end hx:justify-between hx:gap-4">
+        <div>
+          <h2 id="latest-posts" class="hx:text-2xl hx:font-semibold hx:tracking-tight hx:text-slate-950 hx:dark:text-slate-50">最新文章</h2>
+          <p class="hx:mt-2 hx:text-sm hx:text-gray-500 hx:dark:text-gray-400">按时间记录学习、排查和项目推进。</p>
+        </div>
+        <a class="hx:hidden hx:text-sm hx:font-medium hx:text-primary-600 hx:underline hx:underline-offset-4 hx:dark:text-primary-400 hx:sm:inline-flex" href="{{ "archives/" | relURL }}">查看归档</a>
+      </div>
       {{- if $paginator.Pages }}
-        <div class="hx:divide-y hx:divide-gray-200 hx:dark:divide-neutral-800">
-          {{- range $paginator.Pages }}
-            <article class="hx:py-8">
+        <div class="hx:space-y-4">
+          {{- range $index, $page := $paginator.Pages }}
+            <article class="blog-home-post hx:rounded-md hx:border hx:border-gray-200 hx:bg-white/80 hx:p-5 hx:shadow-sm hx:backdrop-blur hx:hover:border-primary-200 hx:hover:bg-white hx:dark:border-neutral-800 hx:dark:bg-neutral-950/60 hx:dark:hover:border-primary-900/60 hx:dark:hover:bg-neutral-950" style="--post-index: {{ $index }}">
               <div class="hx:mb-3 hx:flex hx:flex-wrap hx:items-center hx:gap-x-3 hx:gap-y-2 hx:text-sm hx:text-gray-500 hx:dark:text-gray-400">
-                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "utils/format-date" .Date }}</time>
+                <time class="hx:font-medium hx:text-gray-600 hx:dark:text-gray-300" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ partial "utils/format-date" $page.Date }}</time>
                 {{ if site.Params.blog.list.displayTags }}
                   <div class="hx:flex hx:flex-wrap hx:gap-x-2 hx:gap-y-1">
-                    {{ partial "tags.html" (dict "context" .) }}
+                    {{ partial "tags.html" (dict "context" $page) }}
                   </div>
                 {{ end }}
               </div>
               <h3 class="hx:text-2xl hx:font-semibold hx:tracking-tight hx:text-slate-950 hx:dark:text-slate-50">
-                <a class="hx:transition-colors hx:hover:text-primary-600 hx:dark:hover:text-primary-400" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <a class="hx:transition-colors hx:hover:text-primary-600 hx:dark:hover:text-primary-400" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
               </h3>
-              <p class="hx:mt-3 hx:text-base hx:leading-8 hx:text-gray-600 hx:dark:text-gray-400">{{- partial "utils/page-description" . -}}</p>
+              <p class="hx:mt-3 hx:text-base hx:leading-8 hx:text-gray-600 hx:dark:text-gray-400">{{- partial "utils/page-description" $page -}}</p>
               <a
-                class="hx:mt-4 hx:inline-flex hx:text-sm hx:font-medium hx:text-primary-600 hx:underline hx:underline-offset-4 hx:dark:text-primary-400"
-                href="{{ .RelPermalink }}"
-                aria-label="{{ printf "%s %s" $readMore .Title }}"
+                class="hx:mt-4 hx:inline-flex hx:items-center hx:text-sm hx:font-medium hx:text-primary-600 hx:underline hx:underline-offset-4 hx:dark:text-primary-400"
+                href="{{ $page.RelPermalink }}"
+                aria-label="{{ printf "%s %s" $readMore $page.Title }}"
               >
                 {{- $readMore -}}
               </a>
